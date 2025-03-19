@@ -47,7 +47,7 @@ export const RockForm = ({ fetchRocks }) => {
     return (
         <main className="container--login">
             <section>
-                <form className="form--login" onSubmit={() => { }}>
+                <form className="form--login" onSubmit={collectRock}>
                     <h1 className="text-3xl">Collect a Rock</h1>
                     <fieldset className="mt-4">
                         <label htmlFor="rock">Name:</label>
@@ -64,7 +64,7 @@ export const RockForm = ({ fetchRocks }) => {
                         <input id="weight" type="number"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.weight = e.target.value
+                                copy.weight =e.target.value? parseInt( e.target.value):0
                                 updateRockProps(copy)
                             }}
                             value={rock.weight} className="form-control" />
@@ -75,7 +75,7 @@ export const RockForm = ({ fetchRocks }) => {
                         <select id="type" className="form-control"
                             onChange={e => {
                                 const copy = { ...rock }
-                                copy.type_id = parseInt(e.target.value)
+                                copy.typeId = parseInt(e.target.value)
                                 updateRockProps(copy)
                             }}>
                             <option value={0}>- Select a type -</option>
